@@ -1,24 +1,24 @@
-# [jQuery Scrollify](https://projects.lukehaas.me/scrollify)
+# [jQuery Scrollify](https://lukehaas.me/projects/scrollify)
 
 A jQuery plugin that assists scrolling and snaps to sections. Touch optimised.
 
 ## Demo
 
-[http://projects.lukehaas.me/scrollify](https://projects.lukehaas.me/scrollify).
+[http://lukehaas.me/projects/scrollify](https://lukehaas.me/projects/scrollify).
 
 ## More examples
 
-[Scroll animations](https://projects.lukehaas.me/scrollify/examples/apple)
+[Scroll animations](https://lukehaas.me/projects/scrollify/examples/apple)
 
-[Layered scrolling](https://projects.lukehaas.me/scrollify/examples/layered-scrolling)
+[Layered scrolling](https://lukehaas.me/projects/scrollify/examples/layered-scrolling)
 
-[Pagination](https://projects.lukehaas.me/scrollify/examples/pagination)
+[Pagination](https://lukehaas.me/projects/scrollify/examples/pagination)
 
-[Full page video](https://projects.lukehaas.me/scrollify/examples/full-page-video)
+[Full page video](https://lukehaas.me/projects/scrollify/examples/full-page-video)
 
-[Header and footer](https://projects.lukehaas.me/scrollify/examples/header-footer)
+[Header and footer](https://lukehaas.me/projects/scrollify/examples/header-footer)
 
-[Dynamic content](https://projects.lukehaas.me/scrollify/examples/dynamic-content)
+[Dynamic content](https://lukehaas.me/projects/scrollify/examples/dynamic-content)
 
 ## Basic setup
 
@@ -245,7 +245,7 @@ IE 8+ ✔ | Chrome ✔ | Firefox ✔ | Opera ✔ | Safari ✔ |
 
 ## Acknowledgements
 
-[![Browserstack](http://projects.lukehaas.me/scrollify/images/browserstack2.png)](https://www.browserstack.com/)
+[![Browserstack](http://lukehaas.me/projects/scrollify/images/browserstack2.png)](https://www.browserstack.com/)
 
 Special thanks to [Browserstack](https://www.browserstack.com/) for supporting Scrollify.
 
