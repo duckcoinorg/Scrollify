@@ -1,6 +1,6 @@
 /*!
  * jQuery Scrollify
- * Version 1.0.21
+ * Version 1.0.22
  *
  * Requires:
  * - jQuery 1.7 or higher
@@ -94,7 +94,7 @@ if touchScroll is false - update index
     },
     top = $(settings.target).scrollTop();
   function getportHeight() {
-    return ($(settings.target).innerHeight() + settings.offset);
+    return (window.innerHeight + settings.offset);
   }
   function animateScroll(index,instant,callbacks,toTop) {
     if(currentIndex===index) {
