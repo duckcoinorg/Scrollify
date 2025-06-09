@@ -31,7 +31,7 @@ if touchScroll is false - update index
 
  */
 (function (global,factory) {
-  "use strict";
+  'use strict';
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], function($) {
@@ -45,7 +45,7 @@ if touchScroll is false - update index
     factory(jQuery, global, global.document);
   }
 }(typeof window !== 'undefined' ? window : this, function ($, window, document, undefined) {
-  "use strict";
+  'use strict';
   var heights = [],
     names = [],
     elements = [],
@@ -74,14 +74,14 @@ if touchScroll is false - update index
     eventListenerOptions = { passive: false },
     settings = {
       //section should be an identifier that is the same for each section
-      section: ".section",
-      sectionName: "section-name",
-      interstitialSection: "",
-      easing: "easeOutExpo",
+      section: '.section',
+      sectionName: 'section-name',
+      interstitialSection: '',
+      easing: 'easeOutExpo',
       scrollSpeed: 1100,
       offset: 0,
       scrollbars: true,
-      target:"html,body",
+      target:'html,body',
       standardScrollElements: false,
       setHeights: true,
       overflowScroll:true,
@@ -130,13 +130,13 @@ if touchScroll is false - update index
 
       if(settings.updateHash && settings.sectionName && !(firstLoad===true && index===0)) {
         if(history.pushState) {
-            try {
-              history.replaceState(null, null, names[index]);
-            } catch (e) {
-              if(window.console) {
-                console.warn("Scrollify warning: Page must be hosted to manipulate the hash value.");
-              }
+          try {
+            history.replaceState(null, null, names[index]);
+          } catch (e) {
+            if(window.console) {
+              console.warn('Scrollify warning: Page must be hosted to manipulate the hash value.');
             }
+          }
 
         } else {
           window.location.hash = names[index];
@@ -167,7 +167,7 @@ if touchScroll is false - update index
         if(window.location.hash.length && settings.sectionName && window.console) {
           try {
             if($(window.location.hash).length) {
-              console.warn("Scrollify warning: ID matches hash value - this will cause the page to anchor.");
+              console.warn('Scrollify warning: ID matches hash value - this will cause the page to anchor.');
             }
           } catch (e) {}
         }
@@ -190,7 +190,7 @@ if touchScroll is false - update index
       var lastElements = samples.slice(Math.max(samples.length - num, 1));
 
       for(var i = 0; i < lastElements.length; i++){
-          sum += lastElements[i];
+        sum += lastElements[i];
       }
 
       return Math.ceil(sum/num);
@@ -285,9 +285,9 @@ if touchScroll is false - update index
         e = e || window.event;
         var value;
         if (e.originalEvent) {
-            value = e.originalEvent.wheelDelta || -e.originalEvent.deltaY || -e.originalEvent.detail;
+          value = e.originalEvent.wheelDelta || -e.originalEvent.deltaY || -e.originalEvent.detail;
         } else {
-            value = e.wheelDelta || -e.deltaY || -e.detail;
+          value = e.wheelDelta || -e.deltaY || -e.detail;
         }
         var delta = Math.max(-1, Math.min(1, value));
 
@@ -332,7 +332,7 @@ if touchScroll is false - update index
                 //index, instant, callbacks, toTop
                 animateScroll(index,false,true, false);
               } else {
-                return false
+                return false;
               }
             }
           }
@@ -376,7 +376,7 @@ if touchScroll is false - update index
           $window.on('mouseup', manualScroll.handleMouseup);
           $window.on('scroll', manualScroll.handleScroll);
         } else {
-          $("body").css({"overflow":"hidden"});
+          $('body').css({'overflow':'hidden'});
         }
         window.addEventListener(wheelEvent, manualScroll.wheelHandler, { passive: false });
         //$(document).bind(wheelEvent,manualScroll.wheelHandler);
@@ -386,15 +386,15 @@ if touchScroll is false - update index
 
     swipeScroll = {
       touches : {
-        "touchstart": {"y":-1,"x":-1},
-        "touchmove" : {"y":-1,"x":-1},
-        "touchend"  : false,
-        "direction" : "undetermined"
+        'touchstart': {'y':-1,'x':-1},
+        'touchmove' : {'y':-1,'x':-1},
+        'touchend'  : false,
+        'direction' : 'undetermined'
       },
       options:{
-        "distance" : 30,
-        "timeGap" : 800,
-        "timeStamp" : new Date().getTime()
+        'distance' : 30,
+        'timeGap' : 800,
+        'timeStamp' : new Date().getTime()
       },
       touchHandler: function(event) {
         if(disabled===true) {
@@ -409,49 +409,31 @@ if touchScroll is false - update index
           if (typeof event.touches !== 'undefined') {
             touch = event.touches[0];
             switch (event.type) {
-              case 'touchstart':
-                swipeScroll.touches.touchstart.y = touch.pageY;
-                swipeScroll.touches.touchmove.y = -1;
+            case 'touchstart':
+              swipeScroll.touches.touchstart.y = touch.pageY;
+              swipeScroll.touches.touchmove.y = -1;
 
-                swipeScroll.touches.touchstart.x = touch.pageX;
-                swipeScroll.touches.touchmove.x = -1;
+              swipeScroll.touches.touchstart.x = touch.pageX;
+              swipeScroll.touches.touchmove.x = -1;
 
-                swipeScroll.options.timeStamp = new Date().getTime();
-                swipeScroll.touches.touchend = false;
-              case 'touchmove':
-                swipeScroll.touches.touchmove.y = touch.pageY;
-                swipeScroll.touches.touchmove.x = touch.pageX;
-                if(swipeScroll.touches.touchstart.y!==swipeScroll.touches.touchmove.y && (Math.abs(swipeScroll.touches.touchstart.y-swipeScroll.touches.touchmove.y)>Math.abs(swipeScroll.touches.touchstart.x-swipeScroll.touches.touchmove.x))) {
-                  //if(!overflow[index]) {
-                    event.preventDefault();
-                  //}
-                  swipeScroll.touches.direction = "y";
-                  if((swipeScroll.options.timeStamp+swipeScroll.options.timeGap)<(new Date().getTime()) && swipeScroll.touches.touchend == false) {
+              swipeScroll.options.timeStamp = new Date().getTime();
+              swipeScroll.touches.touchend = false;
+            case 'touchmove':
+              swipeScroll.touches.touchmove.y = touch.pageY;
+              swipeScroll.touches.touchmove.x = touch.pageX;
+              if(swipeScroll.touches.touchstart.y!==swipeScroll.touches.touchmove.y && (Math.abs(swipeScroll.touches.touchstart.y-swipeScroll.touches.touchmove.y)>Math.abs(swipeScroll.touches.touchstart.x-swipeScroll.touches.touchmove.x))) {
+                //if(!overflow[index]) {
+                event.preventDefault();
+                //}
+                swipeScroll.touches.direction = 'y';
+                if((swipeScroll.options.timeStamp+swipeScroll.options.timeGap)<(new Date().getTime()) && swipeScroll.touches.touchend == false) {
 
-                    swipeScroll.touches.touchend = true;
-                    if (swipeScroll.touches.touchstart.y > -1) {
-
-                      if(Math.abs(swipeScroll.touches.touchmove.y-swipeScroll.touches.touchstart.y)>swipeScroll.options.distance) {
-                        if(swipeScroll.touches.touchstart.y < swipeScroll.touches.touchmove.y) {
-
-                          swipeScroll.up();
-
-                        } else {
-                          swipeScroll.down();
-
-                        }
-                      }
-                    }
-                  }
-                }
-                break;
-              case 'touchend':
-                if(swipeScroll.touches[event.type]===false) {
-                  swipeScroll.touches[event.type] = true;
-                  if (swipeScroll.touches.touchstart.y > -1 && swipeScroll.touches.touchmove.y > -1 && swipeScroll.touches.direction==="y") {
+                  swipeScroll.touches.touchend = true;
+                  if (swipeScroll.touches.touchstart.y > -1) {
 
                     if(Math.abs(swipeScroll.touches.touchmove.y-swipeScroll.touches.touchstart.y)>swipeScroll.options.distance) {
                       if(swipeScroll.touches.touchstart.y < swipeScroll.touches.touchmove.y) {
+
                         swipeScroll.up();
 
                       } else {
@@ -459,13 +441,31 @@ if touchScroll is false - update index
 
                       }
                     }
-                    swipeScroll.touches.touchstart.y = -1;
-                    swipeScroll.touches.touchstart.x = -1;
-                    swipeScroll.touches.direction = "undetermined";
                   }
                 }
-              default:
-                break;
+              }
+              break;
+            case 'touchend':
+              if(swipeScroll.touches[event.type]===false) {
+                swipeScroll.touches[event.type] = true;
+                if (swipeScroll.touches.touchstart.y > -1 && swipeScroll.touches.touchmove.y > -1 && swipeScroll.touches.direction==='y') {
+
+                  if(Math.abs(swipeScroll.touches.touchmove.y-swipeScroll.touches.touchstart.y)>swipeScroll.options.distance) {
+                    if(swipeScroll.touches.touchstart.y < swipeScroll.touches.touchmove.y) {
+                      swipeScroll.up();
+
+                    } else {
+                      swipeScroll.down();
+
+                    }
+                  }
+                  swipeScroll.touches.touchstart.y = -1;
+                  swipeScroll.touches.touchstart.x = -1;
+                  swipeScroll.touches.direction = 'undetermined';
+                }
+              }
+            default:
+              break;
             }
           }
         }
@@ -536,7 +536,7 @@ if touchScroll is false - update index
           //scroll, firstLoad
           calculatePositions(scroll,false);
           if(withCallback) {
-              settings.afterResize();
+            settings.afterResize();
           }
         },400);
       },
@@ -574,9 +574,9 @@ if touchScroll is false - update index
       manualScroll.init();
       swipeScroll.init();
 
-      $window.on("resize",util.handleResize);
+      $window.on('resize',util.handleResize);
       if (document.addEventListener) {
-        window.addEventListener("orientationchange", util.handleOrientation, false);
+        window.addEventListener('orientationchange', util.handleOrientation, false);
       }
     }
     function interstitialScroll(pos) {
@@ -602,7 +602,7 @@ if touchScroll is false - update index
       var selector = settings.section;
       overflow = [];
       if(settings.interstitialSection.length) {
-        selector += "," + settings.interstitialSection;
+        selector += ',' + settings.interstitialSection;
       }
       if(settings.scrollbars===false) {
         settings.overflowScroll = false;
@@ -615,13 +615,13 @@ if touchScroll is false - update index
           if($this.is(settings.interstitialSection)) {
             overflow[i] = false;
           } else {
-            if(($this.css("height","auto").outerHeight()<portHeight) || $this.css("overflow")==="hidden") {
-              $this.css({"height":portHeight});
+            if(($this.css('height','auto').outerHeight()<portHeight) || $this.css('overflow')==='hidden') {
+              $this.css({'height':portHeight});
 
               overflow[i] = false;
             } else {
 
-              $this.css({"height":$this.outerHeight()});
+              $this.css({'height':$this.outerHeight()});
 
               if(settings.overflowScroll) {
                 overflow[i] = true;
@@ -648,41 +648,41 @@ if touchScroll is false - update index
     function calculatePositions(scroll,firstLoad) {
       var selector = settings.section;
       if(settings.interstitialSection.length) {
-        selector += "," + settings.interstitialSection;
+        selector += ',' + settings.interstitialSection;
       }
       heights = [];
       names = [];
       elements = [];
       $(selector).each(function(i){
-          var $this = $(this);
-          if(i>0) {
-            heights[i] = parseInt($this.offset().top) + settings.offset;
+        var $this = $(this);
+        if(i>0) {
+          heights[i] = parseInt($this.offset().top) + settings.offset;
+        } else {
+          heights[i] = parseInt($this.offset().top);
+        }
+        if(settings.sectionName && $this.data(settings.sectionName)) {
+          names[i] = '#' + $this.data(settings.sectionName).toString().replace(/ /g,'-');
+        } else {
+          if($this.is(settings.interstitialSection)===false) {
+            names[i] = '#' + (i + 1);
           } else {
-            heights[i] = parseInt($this.offset().top);
-          }
-          if(settings.sectionName && $this.data(settings.sectionName)) {
-            names[i] = "#" + $this.data(settings.sectionName).toString().replace(/ /g,"-");
-          } else {
-            if($this.is(settings.interstitialSection)===false) {
-              names[i] = "#" + (i + 1);
-            } else {
-              names[i] = "#";
-              if(i===$(selector).length-1 && i>1) {
-                heights[i] = heights[i-1] + (parseInt($($(selector)[i-1]).outerHeight()) - parseInt($(window).height())) + parseInt($this.outerHeight());
-              }
+            names[i] = '#';
+            if(i===$(selector).length-1 && i>1) {
+              heights[i] = heights[i-1] + (parseInt($($(selector)[i-1]).outerHeight()) - parseInt($(window).height())) + parseInt($this.outerHeight());
             }
           }
-          elements[i] = $this;
-          try {
-            if($(names[i]).length && window.console) {
-              console.warn("Scrollify warning: Section names can't match IDs - this will cause the browser to anchor.");
-            }
-          } catch (e) {}
+        }
+        elements[i] = $this;
+        try {
+          if($(names[i]).length && window.console) {
+            console.warn('Scrollify warning: Section names can\'t match IDs - this will cause the browser to anchor.');
+          }
+        } catch (e) {}
 
-          if(window.location.hash===names[i]) {
-            index = i;
-            hasLocation = true;
-          }
+        if(window.location.hash===names[i]) {
+          index = i;
+          hasLocation = true;
+        }
 
       });
 
@@ -718,7 +718,7 @@ if touchScroll is false - update index
         return true;
       }
     }
-  }
+  };
 
   function move(panel,instant) {
     var z = names.length;
@@ -742,8 +742,8 @@ if touchScroll is false - update index
     if(panel===undefined) {
       return false;
     }
-    if(typeof panel!=="number" && panel.originalEvent) {
-      panel = $(this).attr("href");
+    if(typeof panel!=='number' && panel.originalEvent) {
+      panel = $(this).attr('href');
     }
     move(panel,false);
   };
@@ -787,10 +787,10 @@ if touchScroll is false - update index
     }
     if(settings.setHeights) {
       $(settings.section).each(function() {
-        $(this).css("height","auto");
+        $(this).css('height','auto');
       });
     }
-    $window.off("resize",util.handleResize);
+    $window.off('resize',util.handleResize);
     if(settings.scrollbars) {
       $window.off('mousedown', manualScroll.handleMousedown);
       $window.off('mouseup', manualScroll.handleMouseup);
@@ -841,11 +841,11 @@ if touchScroll is false - update index
     if(!initialised) {
       return false;
     }
-    if(typeof updatedOptions === "object") {
+    if(typeof updatedOptions === 'object') {
       settings = $.extend(settings, updatedOptions);
       util.handleUpdate();
     } else if(window.console) {
-      console.warn("Scrollify warning: setOptions expects an object.");
+      console.warn('Scrollify warning: setOptions expects an object.');
     }
   };
   $.scrollify = scrollify;

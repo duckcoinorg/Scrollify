@@ -3,3 +3,7 @@ node_modules/
 test/
 npm-debug.log
 new/
+bower_components/
+# exclude minified files
+*.min.js
+*.min.js.map
