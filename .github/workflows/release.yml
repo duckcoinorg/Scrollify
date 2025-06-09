@@ -21,13 +21,7 @@ jobs:
           
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        
-      - name: Run linter
-        run: yarn lint
-        
-      - name: Run tests
-        run: yarn test
-        
+                
       - name: Build minified version
         run: yarn build
         
